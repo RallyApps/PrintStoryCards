@@ -1,0 +1,146 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- Copyright (c) 2012 Rally Software Development Corp. All rights reserved -->
+<html>
+<head>
+  <title>Print Story Cards</title>
+  <meta name="Name" content="App: Print Story Cards" />
+  <meta name="Version" content="2012.11.30" />
+  <meta name="Vendor" content="Rally Software" />
+
+  <script type="text/javascript" src="/apps/1.32/sdk.js"></script>
+
+  <script type="text/javascript">
+    function onLoad() {
+      rally.sdk.ui.AppHeader.setHelpTopic("241");
+      var rallyDataSource = new rally.sdk.data.RallyDataSource('__WORKSPACE_OID__',
+                                                               '__PROJECT_OID__',
+                                                               '__PROJECT_SCOPING_UP__',
+                                                               '__PROJECT_SCOPING_DOWN__');
+      var printStoryCards = new PrintStoryCards(rallyDataSource);
+      printStoryCards.display(dojo.body());
+    }
+
+    rally.addOnLoad(onLoad);
+  </script>
+  
+  <style type="text/css" title="printCards">
+    /* PLEASE LEAVE THIS STYLESHEET INLINE SINCE TITLE IS NECESSARY */
+    @media print {
+      #interface {
+        display: none;
+      }
+
+      .pb {
+        page-break-after: always;
+        clear: both;
+      }
+    }
+
+    #buttonDiv,
+    #iterationDropdown {
+      display: inline;
+    }
+
+    #interface, #printSection {
+      margin: 20px;
+    }
+
+    html {
+      background-color: #fff;
+      color: #000;
+      font: 14pt / 1.26 Arial, Helvetica, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: #fff;
+      margin: 0;
+      padding: 0;
+    }
+
+    .cb {
+      clear: both;
+    }
+
+    .artifact {
+      background-color: #fff;
+      border: 2px solid #000;
+      float: left;
+      height: 3.2in;
+      margin: 0.1in 0.1in 0.1in 0.1in;
+      position: relative;
+      overflow: hidden;
+      width: 4.3in;
+    }
+
+    .header {
+      border: 1px;
+      border-bottom-style: solid;
+      display: table-cell;
+      height: 40px;
+      vertical-align: middle;
+      width: 4.3in;
+    }
+
+    .card-title {
+      font: bold 28px Genova, sans-serif;
+      padding-top: 0.5em;
+      text-align: center;
+    }
+
+    .description {
+      float: left;
+      font: 12pt Georgia, sans-serif;
+      margin: 0.25em auto 0 auto;
+      padding-left: 1.0em;
+      padding-right: 1.0em;
+      overflow-y: hidden;
+      width: 100%;
+      word-wrap: break-word;
+    }
+
+  .owner {
+      float: right;
+      height: 40px;
+    }
+
+    .ownerText {
+      float: right;
+      font: 14pt / 1.26 Arial, Helvetica, sans-serif;
+      margin-right: 0.3em;
+      margin-top: 0.3em;
+    }
+
+    .storyID {
+      float: left;
+      font: 14pt / 1.26 Arial, Helvetica, sans-serif;
+      margin-left: 0.25em;
+      margin-top: 0.3em;
+    }
+
+    .estimate {
+      bottom: 0.5em;
+      position: absolute;
+      right: 0.5em;
+    }
+
+    .content {
+      height: 2.4in;
+      overflow: hidden;
+      width: 4.3in;
+    }
+  </style>
+</head>
+
+<body>
+  <div style="float:right" id="help"></div>
+  <div id="interface">
+      <div id="iterationDropdown"></div>
+      <div id="buttonDiv"></div>
+  </div>
+  <div id="printSection">
+      <div id="cards"></div>
+  </div>
+</body>
+</html>
