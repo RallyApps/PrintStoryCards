@@ -1,7 +1,7 @@
 Rally Print Story Cards
 ==============
 
-![SCREENSHOT](https://raw.github.com/RallyApps/PrintStoryCards/master/deploy/screenshot.png)
+![SCREENSHOT](https://raw.github.com/RallyApps/PrintStoryCards/master/screenshots/title-screenshot.png)
 
 ## Overview
 
